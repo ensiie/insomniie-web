@@ -30,6 +30,8 @@ gem 'jquery-rails'
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'awesome_print'
+  gem 'sextant'
 end
 
 # To use ActiveModel has_secure_password
