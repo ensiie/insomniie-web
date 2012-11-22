@@ -5,6 +5,9 @@ gem 'mongoid', '~> 3.0.0'
 gem 'thin'
 gem "high_voltage"
 gem 'haml-rails'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -64,5 +64,8 @@ module InsomniieWeb
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Heroku specific configuration
+    config.assets.initialize_on_precompile = false
   end
 end
