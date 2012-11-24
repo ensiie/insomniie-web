@@ -1,0 +1,26 @@
+/* Variables and mixins */
+@import helpers/variables
+@import helpers/mixins
+
+/* Twitter bootstrap */
+@import bootstrap
+@import bootstrap-responsive
+
+/* Application default styles */
+@import devices/defaults
+
+/* Large desktop */
+@media (min-width: 1200px)
+  @import devices/desktop
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 1199px)
+  @import devices/tablet_landscape
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 481px) and (max-width: 767px)
+  @import devices/tablet_portrait
+
+/* Landscape phones and down */
+@media (max-width: 480px)
+  @import devices/mobile

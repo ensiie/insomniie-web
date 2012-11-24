@@ -1,0 +1,36 @@
+/* Body */
+body
+  background: image-url('twinkle_twinkle.png')
+
+/* Avatar styles */
+.avatar
+  &, & > img
+    display: inline-block
+    vertical-align: middle
+    margin-right: 5px
+    background: image-url("avatar_placeholder.gif") center no-repeat
+    background-size: 100%
+    // +border-radius(5px)
+    border: 1px solid #999
+    height: 50px
+    width: 50px
+    &.avatar-tiny
+      height: 25px
+      width: 25px
+    &.avatar-small
+      height: 50px
+      width: 50px
+    &.avatar-medium
+      height: 100px
+      width: 100px
+    &.avatar-large
+      height: 200px
+      width: 200px
+
+/* Main navbar */
+.navbar
+  margin-bottom: 15px
+  .avatar
+    margin-top: -10px
+    margin-bottom: -5px
+    border: none
