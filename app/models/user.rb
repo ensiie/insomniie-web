@@ -43,8 +43,9 @@ class User
   # field :authentication_token, :type => String
 
   ## Omniauthable
-  field :provider,      type: String
-  field :uid,           type: String
+  field :provider,            type: String
+  field :uid,                 type: String
+  field :fb_access_token,     type: String
 
   # Avatar
   field :avatar, type: String
@@ -61,7 +62,8 @@ class User
         uid: auth.uid,
         email: auth.info.email,
         password: Devise.friendly_token[0,20],
-        avatar: auth.info.image
+        avatar: auth.info.image,
+        fb_access_token: auth.credentials.token
       )
     end
     user
