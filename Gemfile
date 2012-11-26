@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'awesome_print'
   gem 'sextant'
+  gem 'pry-remote'
 end
 
 # To use ActiveModel has_secure_password
