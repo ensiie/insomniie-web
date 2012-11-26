@@ -36,3 +36,21 @@
           Tous venus de l'ENSIIE Strasbourg, nous sommes tous les six prêts à relever les défis sur le Web, iPhone et Android.
   %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
   %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
+
+.page-header
+  %h2
+    %i.icon-twitter.icon-large
+    On parle de nous sur Twitter !
+
+.row
+  %ul.thumbnails.masonry.clearfix
+    - application_tweets.each do |tweet|
+      %li.span3
+        .span1
+          %img{src: tweet.user.profile_image_url, class: 'circle'}
+        .span2.no-space
+          %strong
+            = tweet.user.name
+            a dit #{l tweet.created_at, format: :short}&nbsp;:
+          %p
+            = tweet.text
