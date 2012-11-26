@@ -3,10 +3,16 @@
   .span12
     .hero-unit
       %h1 A propos
-    .page-header
-      %h2 Notre équipe
 .row
   .span12
+    .page-header
+      %h2 Où sommes-nous ?
+    %iframe{:frameBorder => "0", :height => "300", :src => "http://a.tiles.mapbox.com/v3/suruja.map-asz3cimi.html#11/48.54844312541114/7.764152158935566", :width => "100%"}
+
+.row
+  .span12
+    .page-header
+      %h2 Notre équipe
     %ul.thumbnails.masonry.clearfix
       %li.span4
         .thumbnail
