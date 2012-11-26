@@ -7,7 +7,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .navbar.navbar-static-top
+    .navbar.navbar-fixed-top
       .navbar-inner
         .container
           = link_to root_path, class: "brand" do
@@ -42,3 +42,18 @@
             .flash.flash-alert
               = alert
       = yield
+
+    .footer
+      .container
+        .row
+          .span8
+          .span4
+            .page-header
+              %h3
+                Suivez sur les réseaux sociaux !
+            %p.social-bookmarks
+              = link_to '#' do
+                %i.icon-facebook.icon-large
+              = link_to '#' do
+                %i.icon-twitter.icon-large
+

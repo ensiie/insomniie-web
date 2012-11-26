@@ -1,3 +1,38 @@
-.page-header
+.hero-unit
   %h1 Insomniie pour la Nuit de l'Info
-  %p La nuit va être longue...
+  %p.lead La nuit va être longue...
+
+#myCarousel.carousel.slide
+  .carousel-inner
+    .active.item
+      %img{src: "http://placehold.it/1170x300"}
+      .carousel-caption
+        %h4
+          C'est parti pour toute la nuit !
+        %p
+          La Nuit de l'Info 2012 promet d'être très longue...
+    .item
+      %img{src: "http://placehold.it/1170x300"}
+      .carousel-caption
+        %h4
+          Promotion du patrimoine français !
+        %p
+          C'est le thème de la Nuit.
+    .item
+      %img{src: "http://placehold.it/1170x300"}
+      .carousel-caption
+        %h4
+          Trois applications en une !
+        %p
+          Non seulement vous aurez droit à une application Ruby On Rails
+          %em responsive
+          , mais également deux applications pour iPhone et Android !
+    .item
+      %img{src: "http://placehold.it/1170x300"}
+      .carousel-caption
+        %h4
+          Une équipe de choc !
+        %p
+          Tous venus de l'ENSIIE Strasbourg, nous sommes tous les six prêts à relever les défis sur le Web, iPhone et Android.
+  %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
+  %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›

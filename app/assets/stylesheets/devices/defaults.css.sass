@@ -1,6 +1,41 @@
 /* Body */
 body
-  background: image-url('twinkle_twinkle.png')
+  border-top: 3px solid $activeColor
+  background: $bodyBackground
+  padding-top: 80px
+  color: $textColor
+
+p
+  font-size: 12pt
+  line-height: 1.8em
+
+.hero-unit
+  background: $heroUnitBgColor
+  border-bottom: 1px solid $activeColor
+
+.page-header
+  border-bottom: 1px solid $activeColor
+
+.footer
+  background: #333
+  color: $inverseColor
+  min-height: 200px
+  margin-top: 30px
+  border-top: 4px solid $inverseColor
+  h1, h2, h3, h4, h5, h6
+    color: $inverseColor
+  .social-bookmarks
+    font-size: 30px
+    a
+      border: none
+      i
+        text-align: center
+        +border-radius(50%)
+        background: $inverseDarkColor
+        margin-right: 20px
+        height: 50px
+        width: 50px
+        display: inline-block
 
 /* Avatar styles */
 .avatar
@@ -10,7 +45,6 @@ body
     margin-right: 5px
     background: image-url("avatar_placeholder.gif") center no-repeat
     background-size: 100%
-    // +border-radius(5px)
     border: 1px solid #999
     height: 50px
     width: 50px
