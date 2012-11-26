@@ -53,4 +53,4 @@
             = tweet.user.name
             a dit #{l tweet.created_at, format: :short}&nbsp;:
           %p
-            = tweet.text
+            = auto_link tweet.text
