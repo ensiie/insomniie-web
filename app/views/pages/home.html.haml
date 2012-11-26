@@ -46,7 +46,7 @@
   %ul.thumbnails.masonry.clearfix
     - application_tweets.each do |tweet|
       %li.span3
-        .span1
+        .span1.center
           %img{src: tweet.user.profile_image_url, class: 'circle'}
         .span2.no-space
           %strong

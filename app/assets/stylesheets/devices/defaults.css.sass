@@ -1,8 +1,6 @@
 /* Body */
 body
-  border-top: 3px solid $activeColor
   background: $bodyBackground
-  padding-top: 80px
   color: $textColor
 
 p
@@ -46,6 +44,9 @@ i[class^='icon-']
 img.circle
   +border-radius(50%)
 
+.center
+  text-align: center
+
 /* Avatar styles */
 .avatar
   &, & > img
@@ -72,6 +73,7 @@ img.circle
 
 /* Main navbar */
 .navbar
+  border-top: 2px solid $activeColor
   margin-bottom: 15px
   .avatar
     margin-top: -10px
