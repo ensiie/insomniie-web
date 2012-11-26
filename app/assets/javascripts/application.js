@@ -15,4 +15,5 @@
 //= require masonry/jquery.masonry
 //= require bootstrap-dropdown
 //= require bootstrap-carousel
+//= require bootstrap-modal
 //= require_tree .

@@ -58,6 +58,23 @@
               = link_to 'https://twitter.com/InsomnllE' do
                 %i.icon-twitter.icon-large.circle
 
+    #konami_code.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h3
+          %i.icon-trophy
+          Bravo ! Le Konami code n'a donc pas de secret pour vous...
+      .modal-body
+        %p
+          %iframe{:frameBorder => "0", height: "398", width: "100%"}
+      .modal-footer
+        = link_to 'http://operasoftware.github.com/Emberwind/', target: '_blank', class: 'btn btn-external-link' do
+          %i.icon-link
+          Accéder au site original
+        %button.btn.btn-primary{"aria-hidden" => "true", "data-dismiss" => "modal"}
+          %i.icon-remove
+          Fini de s'amuser ?
+
     #getsat-widget-2723
     %script{:src => "https://loader.engage.gsfn.us/loader.js", :type => "text/javascript"}
     :javascript
