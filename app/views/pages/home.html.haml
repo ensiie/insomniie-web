@@ -58,4 +58,4 @@
             = tweet.user.name
             a dit #{l tweet.created_at, format: :short}&nbsp;:
           %p
-            = auto_link tweet.text
+            != auto_link strip_tags(tweet.text)

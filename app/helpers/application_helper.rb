@@ -1,6 +1,7 @@
 module ApplicationHelper
+  include Twitter::Autolink
 
-  MAX_ATTEMPTS = 3
+  TWITTER_MAX_ATTEMPTS = 3
 
   def avatar_tag(avatar, size = nil, title = nil)
     content_tag :span, nil,
@@ -19,7 +20,7 @@ module ApplicationHelper
       num_attempts += 1
       Twitter.home_timeline
     rescue Twitter::Error::TooManyRequests => error
-      if num_attempts <= MAX_ATTEMPTS
+      if num_attempts <= TWITTER_MAX_ATTEMPTS
         # NOTE: Your process could go to sleep for up to 15 minutes but if you
         # retry any sooner, it will almost certainly fail with the same exception.
         sleep error.rate_limit.reset_in
