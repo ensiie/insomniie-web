@@ -9,7 +9,7 @@ $(document).on "ready page:load", ->
   )
 
 
-$(window).load ->
+$(window).on "load resize", ->
 
   # Masonry
   $('.masonry').masonry()
