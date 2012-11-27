@@ -15,6 +15,9 @@ module ApplicationHelper
   end
 
   def application_tweets
+    # Disable tweets if Twitter env config do not exist
+    return [] unless ENV['TWITTER_CONSUMER_KEY'] and ENV['TWITTER_CONSUMER_SECRET']
+
     num_attempts = 0
     begin
       num_attempts += 1
