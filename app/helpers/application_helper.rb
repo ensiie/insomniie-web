@@ -21,7 +21,7 @@ module ApplicationHelper
     num_attempts = 0
     begin
       num_attempts += 1
-      Twitter.home_timeline
+      yield
     rescue Twitter::Error::TooManyRequests => error
       if num_attempts <= TWITTER_MAX_ATTEMPTS
         # NOTE: Your process could go to sleep for up to 15 minutes but if you
