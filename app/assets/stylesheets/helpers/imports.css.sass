@@ -5,7 +5,6 @@
 
 /* Twitter bootstrap and bootswatch */
 @import bootswatch/journal/bootstrap
-@import bootstrap-responsive
 @import font-awesome
 
 /* Application default styles */
@@ -16,7 +15,7 @@
   @import devices/desktop
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 1199px)
+@media (min-width: 768px) and (max-width: 979px)
   @import devices/tablet_landscape
 
 /* Landscape phone to portrait tablet */
@@ -26,3 +25,5 @@
 /* Landscape phones and down */
 @media (max-width: 480px)
   @import devices/mobile
+
+@import bootstrap-responsive
