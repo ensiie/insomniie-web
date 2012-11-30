@@ -13,6 +13,8 @@ gem 'omniauth-facebook'
 gem 'koala'
 gem 'twitter'
 gem 'twitter-text'
+gem 'vacuum'
+gem 'nokogiri'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

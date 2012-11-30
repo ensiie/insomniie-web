@@ -5,3 +5,8 @@ fr:
   time:
     formats:
       short: "le %d/%m à %Hh%M"
+  support:
+    array:
+      words_connector: ', '
+      last_word_connector: ' et '
+      two_words_connector: ' et '

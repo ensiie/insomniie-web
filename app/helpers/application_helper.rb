@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module ApplicationHelper
   include Twitter::Autolink
 
@@ -32,5 +34,53 @@ module ApplicationHelper
         raise
       end
     end
+  end
+
+  def amazon_products_for(collection, keywords)
+    results = Hash.from_xml(
+      VACUUM.get(
+        query: {
+          'Operation'       => 'ItemSearch',
+          'SearchIndex'     => 'Books',
+          'Keywords'        => keywords,
+          'ResponseGroup'   => 'ItemAttributes,OfferSummary,Images'
+        }
+      ).body
+    )
+    items = results['ItemSearchResponse']['Items']['Item']
+    return [] if items.blank?
+    items = [items] unless items.is_a?(Array)
+    items.inject([]) do |memo, item|
+      price = item.try(:[], 'OfferSummary').try(:[], 'LowestNewPrice').try(:[], 'Amount')
+      if price
+        author = item['ItemAttributes']['Author']
+        if author and author.is_a?(Array)
+          author = author.to_sentence
+        end
+        memo << {
+          title: item['ItemAttributes']['Title'],
+          author: author,
+          url: item['DetailPageURL'],
+          price: number_to_euros(price.to_f / 100.0),
+          image: item['ImageSets']['ImageSet']['MediumImage']['URL']
+        }
+      else
+        memo
+      end
+    end
+  end
+
+  def amazon_books_for(keywords)
+    amazon_products_for 'Books', keywords
+  end
+
+  def number_to_euros(number)
+    number_to_currency(
+      number,
+      unit: '€',
+      separator: ',',
+      delimiter: '',
+      format: "%n %u"
+    )
   end
 end
