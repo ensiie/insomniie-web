@@ -130,7 +130,6 @@
             %h3
               Viveris
 
-
 .row
   .span12
     .page-header
@@ -168,3 +167,32 @@
       Nous aimons le travail bien fait et nous attachons une grande importance
       à l'expérience utilisateur. Nous espérons donc que vous apprécierez votre
       navigation sur nos applis.
+
+.row
+  .span12
+    .page-header
+      %h2
+        %i.icon-book
+        Des insomnies ? Lisez sur le sujet !
+      %p.lead
+        Les produits sont récupérés dynamiquement d'Amazon Product Advertising API et sont les résultats de recherches sur le sommeil ou sur l'insomnie, aléatoirement.
+    - amazon_books = amazon_books_for(%w{insomnie sommeil}.sample)
+    - if amazon_books.empty?
+      %em Aucun résultats reçus de la part d'Amazon. Une erreur est peut-être survenue. Essayez de recharger la page.
+    - else
+      %ul.thumbnails.masonry.clearfix
+        - amazon_books.each do |book|
+          %li.span4
+            .thumbnail
+              = image_tag book[:image]
+              .caption
+                %h3
+                  = book[:title]
+                %p.lead
+                  = book[:author]
+                %small
+                  Le neuf le moins cher est à
+                  = book[:price]
+                = link_to book[:url], target: "_blank", class: "btn btn-primary" do
+                  %i.icon-link
+                  Voir le produit sur Amazon

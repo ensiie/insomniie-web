@@ -37,7 +37,7 @@ module ApplicationHelper
   end
 
   def amazon_products_for(collection, keywords)
-    results = Hash.from_xml(
+    amazon_results = Hash.from_xml(
       VACUUM.get(
         query: {
           'Operation'       => 'ItemSearch',
@@ -47,9 +47,10 @@ module ApplicationHelper
         }
       ).body
     )
-    items = results['ItemSearchResponse']['Items']['Item']
+    items = amazon_results['ItemSearchResponse']['Items']['Item']
     return [] if items.blank?
     items = [items] unless items.is_a?(Array)
+
     items.inject([]) do |memo, item|
       price = item.try(:[], 'OfferSummary').try(:[], 'LowestNewPrice').try(:[], 'Amount')
 
@@ -65,7 +66,7 @@ module ApplicationHelper
         if image
           image = image['ImageSet']
           image = image.first if image.is_a?(Array)
-          image = image['MediumImage']['URL']
+          image = image['LargeImage']['URL']
         end
 
         memo << {
@@ -79,6 +80,8 @@ module ApplicationHelper
         memo
       end
     end
+  rescue Exception
+    []
   end
 
   def amazon_books_for(keywords)
