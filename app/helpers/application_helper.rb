@@ -52,17 +52,28 @@ module ApplicationHelper
     items = [items] unless items.is_a?(Array)
     items.inject([]) do |memo, item|
       price = item.try(:[], 'OfferSummary').try(:[], 'LowestNewPrice').try(:[], 'Amount')
+
       if price
-        author = item['ItemAttributes']['Author']
-        if author and author.is_a?(Array)
-          author = author.to_sentence
+        item_attributes = item['ItemAttributes']
+        if item_attributes
+          author = item_attributes['Author']
+          author = author.to_sentence if author.is_a?(Array)
+          title = item_attributes['Title']
         end
+
+        image = item['ImageSets']
+        if image
+          image = image['ImageSet']
+          image = image.first if image.is_a?(Array)
+          image = image['MediumImage']['URL']
+        end
+
         memo << {
-          title: item['ItemAttributes']['Title'],
+          title: title,
           author: author,
           url: item['DetailPageURL'],
           price: number_to_euros(price.to_f / 100.0),
-          image: item['ImageSets']['ImageSet']['MediumImage']['URL']
+          image: image
         }
       else
         memo
