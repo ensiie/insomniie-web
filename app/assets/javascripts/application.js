@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
 //= require masonry/jquery.masonry
 //= require bootstrap-transition
 //= require bootstrap-dropdown

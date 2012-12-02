@@ -15,6 +15,8 @@ gem 'twitter'
 gem 'twitter-text'
 gem 'vacuum'
 gem 'nokogiri'
+gem 'gon'
+gem 'underscore-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

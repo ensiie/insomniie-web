@@ -1,0 +1,87 @@
+# Store all the MapBox already placed markers
+mapboxMarkers = []
+
+# Set Geoname coords
+geonameCoords = (geoname) ->
+  [geoname.lng, geoname.lat]
+
+# Set Geoname coords key for mapbox markers array
+geonameCoordsKey = (geoname) ->
+  geonameCoords(geoname).join ','
+
+# Set the pan offset delta from the map
+# The pan delta must exceed this value to reload markers
+updatePanOffsetDelta = (map) ->
+  30.0 + parseFloat(map.zoom())
+
+# Remove all the markers, asynchronously
+# load POIs from Geonames API and put the new markers on the map
+resetMarkers = (map, markerLayer) ->
+
+  # Get the current map boundary
+  bounds = map.getExtent()
+
+  # Asynchronously load Geonames POIs as JSON
+  $.getJSON "#{gon.geonamesUrl}&east=#{bounds.east}&west=#{bounds.west}&north=#{bounds.north}&south=#{bounds.south}", (data) =>
+    unless data is undefined
+      for geoname in data.geonames
+
+        # Add only the unexisting markers
+        unless _(mapboxMarkers).contains geonameCoordsKey(geoname)
+          markerLayer.add_feature
+            geometry:
+              coordinates: geonameCoords(geoname)
+            ,
+            properties:
+              'marker-color': '#eeaa00',
+              'marker-symbol': 'monument',
+              title: "<a href=\"https://www.google.fr/search?q=#{escape(geoname.toponymName)}\" target=\"_blank\">#{geoname.toponymName}</a>"
+          mapboxMarkers.push geonameCoordsKey(geoname)
+
+
+$(document).on "ready page:load", ->
+
+  # Add a MapBox map
+  if $('#map').length > 0
+
+    # Load the empty map
+    map = mapbox.map 'map'
+
+    # Make map moves smooth
+    mapbox.ease map
+
+    # Add zoom button in the toolbar
+    map.ui.zoomer.add()
+
+    # Add fullscreen button in the toolbar
+    map.ui.fullscreen.add()
+
+    # Add the empty mapbox layer
+    map.addLayer mapbox.layer().id('<%= ENV['MAPBOX_LAYER_ID'] %>')
+
+    # Add the markers layer
+    markerLayer = mapbox.markers.layer()
+
+    # Add interaction to this marker layer. This
+    # binds tooltips to each marker that has title
+    # and description defined.
+    mapbox.markers.interaction markerLayer
+    map.addLayer markerLayer
+
+    # Center and zoom the map on France
+    map.zoom(6).center lat: 46.97247614610904, lon: 2.856034587840036
+
+    # Reset pan change delta
+    panOffsetChangeDelta = updatePanOffsetDelta(map)
+
+    # Set markers on the map
+    resetMarkers map, markerLayer
+
+    map.addCallback "zoomed", (map, zoomOffset) ->
+      panOffsetChangeDelta = updatePanOffsetDelta(map)
+      resetMarkers map, markerLayer
+
+    map.addCallback "panned", (map, panOffset) ->
+      # Refresh only if map is panned significantly
+      if Math.abs(panOffset[0]) > panOffsetChangeDelta or Math.abs(panOffset[1]) > panOffsetChangeDelta
+        resetMarkers map, markerLayer

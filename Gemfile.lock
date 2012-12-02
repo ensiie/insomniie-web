@@ -71,6 +71,9 @@ GEM
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     fssm (0.2.9)
+    gon (4.0.1)
+      actionpack (>= 2.3.0)
+      json
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
@@ -195,6 +198,7 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    underscore-rails (1.4.2.1)
     vacuum (0.3.0)
       jeff (~> 0.4.0)
     warden (1.2.1)
@@ -210,6 +214,7 @@ DEPENDENCIES
   compass-rails
   devise
   font-awesome-sass-rails
+  gon
   haml-rails
   high_voltage
   jquery-rails
@@ -228,4 +233,5 @@ DEPENDENCIES
   twitter
   twitter-text
   uglifier (>= 1.0.3)
+  underscore-rails
   vacuum
