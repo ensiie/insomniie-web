@@ -4,4 +4,5 @@ module ApplicationHelper
   include AvatarHelper
   include MapHelper
   include GoogleSearchHelper
+  include DeezerHelper
 end
