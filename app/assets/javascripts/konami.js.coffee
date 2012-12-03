@@ -6,8 +6,12 @@ kExec = ->
   kc.on 'show', ->
     kc.find('iframe').attr 'src', game_url
     external_link.attr 'href', game_url
+    $('body').toggleClass 'canada'
+    $.post '/theme'
+
   kc.on 'hide', ->
     kc.find('iframe').attr 'src', ''
+
   kc.modal()
   external_link.on 'click', ->
     kc.modal('hide')

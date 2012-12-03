@@ -1,0 +1,16 @@
+/* Media queries */
+@mixin media-desktop
+  @media (min-width: 1200px)
+    @content
+
+@mixin media-tablet-landscape
+  @media (min-width: 768px) and (max-width: 979px)
+    @content
+
+@mixin media-tablet-portrait
+  @media (min-width: 481px) and (max-width: 767px)
+    @content
+
+@mixin media-mobile
+  @media (max-width: 480px)
+    @content
