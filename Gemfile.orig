@@ -17,11 +17,13 @@ gem 'vacuum'
 gem 'nokogiri'
 gem 'gon'
 gem 'underscore-rails'
+<<<<<<< Updated upstream
 gem 'asset_sync'
+=======
 gem 'tire'
 gem 'rabl'
 gem 'kaminari'
-gem 'foursquare2'
+>>>>>>> Stashed changes
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -70,8 +70,6 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
-    faraday_middleware (0.9.0)
-      faraday (>= 0.7.4, < 0.9)
     fog (1.7.0)
       builder
       excon (~> 0.14)
@@ -86,10 +84,6 @@ GEM
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     formatador (0.2.4)
-    foursquare2 (1.9.0)
-      faraday (~> 0.8)
-      faraday_middleware (>= 0.8)
-      hashie (~> 1.0)
     fssm (0.2.9)
     gon (4.0.1)
       actionpack (>= 2.3.0)
@@ -195,9 +189,12 @@ GEM
     rake (10.0.2)
     rdoc (3.12)
       json (~> 1.4)
+<<<<<<< Updated upstream
+    ruby-hmac (0.4.0)
+=======
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    ruby-hmac (0.4.0)
+>>>>>>> Stashed changes
     sass (3.2.3)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -254,7 +251,6 @@ DEPENDENCIES
   compass-rails
   devise
   font-awesome-sass-rails
-  foursquare2
   gon
   haml-rails
   high_voltage

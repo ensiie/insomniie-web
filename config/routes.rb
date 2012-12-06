@@ -9,4 +9,10 @@ InsomniieWeb::Application.routes.draw do
   end
 
   root :to => 'high_voltage/pages#show', :id => 'home'
+
+  namespace :api do
+    namespace :v1, format: :json do
+      resource :journey
+    end
+  end
 end
