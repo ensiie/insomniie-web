@@ -17,6 +17,7 @@ gem 'vacuum'
 gem 'nokogiri'
 gem 'gon'
 gem 'underscore-rails'
+gem 'asset_sync'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
