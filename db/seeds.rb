@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+
+file = YAML.load_file(Rails.root.to_s + "/data/plats.yml")
+file.each do |r|
+  r.each_pair do |region,dishes|
+    dishes.each do |dish|
+      puts "Add " + dish + " (" + region + ")"
+      Dish.create name: dish, region: region
+    end
+  end
+end
+
