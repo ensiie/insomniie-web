@@ -1,5 +1,7 @@
 InsomniieWeb::Application.routes.draw do
 
+  root :to => 'high_voltage/pages#show', :id => 'home'
+
   devise_for :users,
     :skip => [:sessions, :registrations],
     :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
@@ -8,11 +10,15 @@ InsomniieWeb::Application.routes.draw do
     post 'theme' => 'users/settings#change_theme'
   end
 
-  root :to => 'high_voltage/pages#show', :id => 'home'
+  resource :journey
 
   namespace :api do
     namespace :v1, format: :json do
       resource :journey
+      namespace :cities do
+        post "autocomplete", action: "autocomplete"
+        post "region", action: "region"
+      end
     end
   end
 end
