@@ -54,21 +54,7 @@
           - if alert
             .flash.flash-alert
               = alert
-      = yield
-
-    .footer
-      .container
-        .row
-          .span8
-          .span4
-            .page-header
-              %h3
-                Suivez-nous sur les réseaux sociaux !
-            %p.social-bookmarks
-              = link_to '#' do
-                %i.icon-facebook.icon-large.circle
-              = link_to 'https://twitter.com/InsomnllE' do
-                %i.icon-twitter.icon-large.circle
+    = yield
 
     #konami_code.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
       .modal-header

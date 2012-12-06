@@ -1,28 +1,63 @@
 -# encoding: utf-8
-.row
-  .span12
-    .hero-unit
-      .background(aria-hidden="true")
-        %i.icon-info-sign
-      %h1 À propos
-.row
-  .span12
-    .page-header
-      %h2
-        %i.icon-map-marker
-        Où nous trouver ?
-        %small
-          Grâce à
-          = link_to 'http://mapbox.com' do
-            MapBox
-    %iframe{:frameBorder => "0", :height => "300", :src => "http://a.tiles.mapbox.com/v3/suruja.map-asz3cimi.html#11/48.575368052903045/7.759688963134783", :width => "100%"}
 
 .row
-  .span12
-    .page-header
-      %h2
-        %i.icon-group
-        Notre équipe
+  .hero-unit
+    .container
+      .span12
+        .background(aria-hidden="true")
+          %i.icon-info-sign
+        %h1 À propos
+        %p.lead
+          Insomniie pour la Nuit de l'Info
+
+#myCarousel.carousel.slide
+  .carousel-inner
+    .active.item
+      %img{src: "http://placehold.it/2000x500"}
+      .carousel-caption
+        .container
+          %h4
+            C'est parti pour toute la nuit !
+          %p
+            La Nuit de l'Info 2012 promet d'être très longue...
+    .item
+      %img{src: "http://placehold.it/2000x500"}
+      .carousel-caption
+        .container
+          %h4
+            Promotion du patrimoine français !
+          %p
+            C'est le thème de la Nuit.
+    .item
+      %img{src: "http://placehold.it/2000x500"}
+      .carousel-caption
+        .container
+          %h4
+            Trois applications en une !
+          %p
+            Non seulement vous aurez droit à une application Ruby On Rails
+            %em responsive
+            , mais également deux applications pour iPhone et Android !
+    .item
+      %img{src: "http://placehold.it/2000x500"}
+      .carousel-caption
+        .container
+          %h4
+            Une équipe de choc !
+          %p
+            Tous venus de l'ENSIIE Strasbourg, nous sommes tous les six prêts à relever les défis sur le Web, iPhone et Android.
+  %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
+  %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›
+
+.row
+  .page-header
+    .container
+      .span12
+        %h2
+          %i.icon-group
+          Notre équipe
+.row
+  .container
     %ul.thumbnails.masonry.clearfix
       %li.span4
         .thumbnail
@@ -100,191 +135,251 @@
               Bbbvvvvv fait la photocopieuse,
               Miaaabbbvvvv fait la copycat !
               Grand, poilu tel un kiwi, tout est ok pour l'insomniie.
-.page-header
-  %h2
-    %i.icon-screenshot
-    Les défis que nous allons relever
-.row
-  .span12
-    %ul.thumbnails.masonry.clearfix
-      %li.span3
-        .thumbnail
-          = image_tag "abase.gif"
-          .caption
-            %h3
-              Abase
-      %li.span3
-        .thumbnail
-          = image_tag "actimage.png"
-          .caption
-            %h3
-              Actimage
-      %li.span3
-        .thumbnail
-          = image_tag "arduinnova.jpg"
-          .caption
-            %h3
-              Arduinnova
-      %li.span3
-        .thumbnail
-          = image_tag "atos.jpg"
-          .caption
-            %h3
-              Atos
-      %li.span3
-        .thumbnail
-          = image_tag "cci_sud_alsace_mulhouse.jpg"
-          .caption
-            %h3
-              CCI Sud Alsace Mulhouse
-      %li.span3
-        .thumbnail
-          = image_tag "femmes_du_numerique.jpg"
-          .caption
-            %h3
-              Femmes du Numérique
-      %li.span3
-        .thumbnail
-          = image_tag "human_coders.png"
-          .caption
-            %h3
-              Human Coders
-      %li.span3
-        .thumbnail
-          = image_tag "infotel.png"
-          .caption
-            %h3
-              Infotel
-      %li.span3
-        .thumbnail
-          = image_tag "inria.jpg"
-          .caption
-            %h3
-              Inria
-      %li.span3
-        .thumbnail
-          = image_tag "lif.png"
-          .caption
-            %h3
-              LIF
-      %li.span3
-        .thumbnail
-          = image_tag "logica.png"
-          .caption
-            %h3
-              Logica Est
-      %li.span3
-        .thumbnail
-          = image_tag "logica.png"
-          .caption
-            %h3
-              Logica Paris
-      %li.span3
-        .thumbnail
-          = image_tag "logica.png"
-          .caption
-            %h3
-              Logica Toulouse
-      %li.span3
-        .thumbnail
-          = image_tag "open.png"
-          .caption
-            %h3
-              Open
-      %li.span3
-        .thumbnail
-          = image_tag "rhenatic.png"
-          .caption
-            %h3
-              Rhenatic
-      %li.span3
-        .thumbnail
-          = image_tag "super_original.jpg"
-          .caption
-            %h3
-              Super Original
-      %li.span3
-        .thumbnail
-          = image_tag "super_twitter.jpg"
-          .caption
-            %h3
-              Super Twitter
-      %li.span3
-        .thumbnail
-          = image_tag "viveris.png"
-          .caption
-            %h3
-              Viveris
-      %li.span3
-        .thumbnail
-          = image_tag "zenika.jpg"
-          .caption
-            %h3
-              Zenika
 
 .row
-  .span12
-    .page-header
-      %h2
-        %i.icon-trophy
-        Pourquoi nous allons gagner
-  .span4
-    %h3
-      %i.icon-bolt.icon-large
-      Technologies de pointe
-    %p.lead
-      Ruby On Rails, iOS, Android
-    %p
-      Parce que nous sommes passionnés de nouvelles
-      technologies, nous mettons en avant celles auxquelles
-      nous croyons.
-  .span4
-    %h3
-      %i.icon-group.icon-large
-      Équipe de choc
-    %p.lead
-      7 développeurs passionnés
-    %p
-      Le travail ne nous fait pas peur. Nous ferons tout ce que nous pouvons
-      (et plus encore) pour atteindre notre objectif : obtenir une application
-      utile, simple d'utilisation et jolie. Ne nous dîtes pas que c'est impossible,
-      nous sommes têtus comme des mules.
-  .span4
-    %h3
-      %i.icon-heart.icon-large
-      Fait avec amour
-    %p.lead
-      Nos applis sont faites pour vous
-    %p
-      Nous aimons le travail bien fait et nous attachons une grande importance
-      à l'expérience utilisateur. Nous espérons donc que vous apprécierez votre
-      navigation sur nos applis.
+  .page-header
+    .container
+      .span12
+        %h2
+          %i.icon-map-marker
+          Où nous trouver ?
+          %small
+            Grâce à
+            = link_to 'http://mapbox.com' do
+              MapBox
+.row
+  %iframe{:frameBorder => "0", :height => "300", :src => "http://a.tiles.mapbox.com/v3/suruja.map-asz3cimi.html#11/48.575368052903045/7.759688963134783", :width => "100%"}
 
 .row
-  .span12
-    .page-header
-      %h2
-        %i.icon-book
-        Des insomnies ? Lisez sur le sujet !
+  .page-header
+    .container
+      .span12
+        %h2
+          %i.icon-trophy
+          Pourquoi nous allons gagner
+.container
+  .row
+    .span4
+      %h3
+        %i.icon-bolt.icon-large
+        Technologies de pointe
+      %p.lead
+        Ruby On Rails, iOS, Android
       %p
-        Les produits sont récupérés dynamiquement d'Amazon Product Advertising API et sont les résultats de recherches sur le sommeil ou sur l'insomnie, aléatoirement.
-    - amazon_books = amazon_books_for(%w{insomnie sommeil}.sample)
-    - if amazon_books.empty?
-      %em Aucun résultats reçus de la part d'Amazon. Une erreur est peut-être survenue. Essayez de recharger la page.
-    - else
+        Parce que nous sommes passionnés de nouvelles
+        technologies, nous mettons en avant celles auxquelles
+        nous croyons.
+    .span4
+      %h3
+        %i.icon-group.icon-large
+        Équipe de choc
+      %p.lead
+        7 développeurs passionnés
+      %p
+        Le travail ne nous fait pas peur. Nous ferons tout ce que nous pouvons
+        (et plus encore) pour atteindre notre objectif : obtenir une application
+        utile, simple d'utilisation et jolie. Ne nous dîtes pas que c'est impossible,
+        nous sommes têtus comme des mules.
+    .span4
+      %h3
+        %i.icon-heart.icon-large
+        Fait avec amour
+      %p.lead
+        Nos applis sont faites pour vous
+      %p
+        Nous aimons le travail bien fait et nous attachons une grande importance
+        à l'expérience utilisateur. Nous espérons donc que vous apprécierez votre
+        navigation sur nos applis.
+
+.row
+  .page-header
+    .container
+      .span12
+        %h2
+          %i.icon-screenshot
+          Les défis que nous allons relever
+.container
+  .row
+    .span12
       %ul.thumbnails.masonry.clearfix
-        - amazon_books.each do |book|
-          %li.span4
-            .thumbnail
-              = image_tag book[:image]
-              .caption
-                %h3
-                  = book[:title]
-                %p.lead
-                  = book[:author]
-                %small
-                  Le neuf le moins cher est à
-                  = book[:price]
-                = link_to book[:url], target: "_blank", class: "btn btn-primary" do
-                  %i.icon-link
-                  Voir le produit sur Amazon
+        %li.span3
+          .thumbnail
+            = image_tag "abase.gif"
+            .caption
+              %h3
+                Abase
+        %li.span3
+          .thumbnail
+            = image_tag "actimage.png"
+            .caption
+              %h3
+                Actimage
+        %li.span3
+          .thumbnail
+            = image_tag "arduinnova.jpg"
+            .caption
+              %h3
+                Arduinnova
+        %li.span3
+          .thumbnail
+            = image_tag "atos.jpg"
+            .caption
+              %h3
+                Atos
+        %li.span3
+          .thumbnail
+            = image_tag "cci_sud_alsace_mulhouse.jpg"
+            .caption
+              %h3
+                CCI Sud Alsace Mulhouse
+        %li.span3
+          .thumbnail
+            = image_tag "femmes_du_numerique.jpg"
+            .caption
+              %h3
+                Femmes du Numérique
+        %li.span3
+          .thumbnail
+            = image_tag "human_coders.png"
+            .caption
+              %h3
+                Human Coders
+        %li.span3
+          .thumbnail
+            = image_tag "infotel.png"
+            .caption
+              %h3
+                Infotel
+        %li.span3
+          .thumbnail
+            = image_tag "inria.jpg"
+            .caption
+              %h3
+                Inria
+        %li.span3
+          .thumbnail
+            = image_tag "lif.png"
+            .caption
+              %h3
+                LIF
+        %li.span3
+          .thumbnail
+            = image_tag "logica.png"
+            .caption
+              %h3
+                Logica Est
+        %li.span3
+          .thumbnail
+            = image_tag "logica.png"
+            .caption
+              %h3
+                Logica Paris
+        %li.span3
+          .thumbnail
+            = image_tag "logica.png"
+            .caption
+              %h3
+                Logica Toulouse
+        %li.span3
+          .thumbnail
+            = image_tag "open.png"
+            .caption
+              %h3
+                Open
+        %li.span3
+          .thumbnail
+            = image_tag "rhenatic.png"
+            .caption
+              %h3
+                Rhenatic
+        %li.span3
+          .thumbnail
+            = image_tag "super_original.jpg"
+            .caption
+              %h3
+                Super Original
+        %li.span3
+          .thumbnail
+            = image_tag "super_twitter.jpg"
+            .caption
+              %h3
+                Super Twitter
+        %li.span3
+          .thumbnail
+            = image_tag "viveris.png"
+            .caption
+              %h3
+                Viveris
+        %li.span3
+          .thumbnail
+            = image_tag "zenika.jpg"
+            .caption
+              %h3
+                Zenika
+
+
+.page-header
+  .container
+    %h2
+      %i.icon-twitter.icon-large
+      On parle de nous sur Twitter !
+
+.container
+  .row
+    %ul.thumbnails.masonry.clearfix
+      - application_tweets{ Twitter.home_timeline }.each do |tweet|
+        %li.span3
+          .span1.center
+            %img{src: tweet.user.profile_image_url, class: 'circle'}
+          .span2.no-space
+            %strong
+              = tweet.user.name
+              a dit #{l tweet.created_at, format: :short}&nbsp;:
+            %p
+              != auto_link strip_tags(tweet.text)
+
+.row
+  .page-header
+    .container
+      .span12
+        %h2
+          %i.icon-book
+          Des insomnies ? Lisez sur le sujet !
+        %p
+          Les produits sont récupérés dynamiquement d'Amazon Product Advertising API et sont les résultats de recherches sur le sommeil ou sur l'insomnie, aléatoirement.
+.container
+  .row
+    .span12
+      - amazon_books = amazon_books_for(%w{insomnie sommeil}.sample)
+      - if amazon_books.empty?
+        %em Aucun résultats reçus de la part d'Amazon. Une erreur est peut-être survenue. Essayez de recharger la page.
+      - else
+        %ul.thumbnails.masonry.clearfix
+          - amazon_books.each do |book|
+            %li.span4
+              .thumbnail
+                = image_tag book[:image]
+                .caption
+                  %h3
+                    = book[:title]
+                  %p.lead
+                    = book[:author]
+                  %small
+                    Le neuf le moins cher est à
+                    = book[:price]
+                  = link_to book[:url], target: "_blank", class: "btn btn-primary" do
+                    %i.icon-link
+                    Voir le produit sur Amazon
+
+.footer
+  .container
+    .row
+      .span4
+        .page-header
+          %h3
+            Suivez-nous sur les réseaux sociaux !
+        %p.social-bookmarks
+          = link_to '#' do
+            %i.icon-facebook.icon-large.circle
+          = link_to 'https://twitter.com/InsomnllE' do
+            %i.icon-twitter.icon-large.circle
