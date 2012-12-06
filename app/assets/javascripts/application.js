@@ -19,4 +19,5 @@
 //= require bootstrap-carousel
 //= require bootstrap-collapse
 //= require bootstrap-modal
+//= require bootstrap-typeahead
 //= require_tree .
