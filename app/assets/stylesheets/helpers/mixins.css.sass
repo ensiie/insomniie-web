@@ -14,3 +14,9 @@
 @mixin media-mobile
   @media (max-width: 480px)
     @content
+
+/* CSS3 Transitions */
+@mixin hard-transition($type: ease, $time: 0.5s)
+  -webkit-transform: translate3d(0, 0, 0)
+  -webkit-backface-visibility: hidden
+  +single-transition($type, $time)
