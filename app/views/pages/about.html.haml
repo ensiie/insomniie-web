@@ -266,7 +266,7 @@
       %h2
         %i.icon-book
         Des insomnies ? Lisez sur le sujet !
-      %p.lead
+      %p
         Les produits sont récupérés dynamiquement d'Amazon Product Advertising API et sont les résultats de recherches sur le sommeil ou sur l'insomnie, aléatoirement.
     - amazon_books = amazon_books_for(%w{insomnie sommeil}.sample)
     - if amazon_books.empty?
