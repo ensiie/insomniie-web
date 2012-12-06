@@ -34,7 +34,7 @@ group :assets do
   gem 'masonry-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'compass-rails'
-  gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git'
+  gem 'bootstrap-sass', git: 'https://github.com/thomas-mcdonald/bootstrap-sass.git'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'font-awesome-sass-rails'
 
