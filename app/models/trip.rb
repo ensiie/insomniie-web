@@ -25,26 +25,21 @@ class Trip
   BIKE_RENTAL = '4e4c9077bd41f78e849722f9'
   TOURIST_INFORMATION_CENTER = '4f4530164b9074f6e4fb00ff'
   TRAIN_STATION = '4bf58dd8d48988d129951735'
+  HISTORIC_SITE = '4deefb944765f83613cdba6e'
+  FRENCH_RESTAURANT = '4bf58dd8d48988d10c941735'
 
   def fetch_details
     # petit dej
-    venue = foursquare_venues(self.city, [CAFE])['groups'][0]['items'][0]['venue']
-    petit_dej = TripDetail.create({
-      time: '8am',
-      category: 'Petit dejeuné',
-      venue_name: venue['name'],
-      venue_lat: venue['location']['lat'],
-      venue_lng: venue['location']['lng'],
-      venue_4sq_id: venue['4f1860a7e4b0ebf9e4a3f3b6']
-    })
-
-    self.details << petit_dej
+    self.details << TripDetail.create_from_4sq_hsh('8h', 'Petit dejeuné', foursquare_venues(self.city, [CAFE])[0]['venue'])
+    self.details << TripDetail.create_from_4sq_hsh('9h', 'Information', foursquare_venues(self.city, [TOURIST_INFORMATION_CENTER])[0]['venue'])
+    self.details << TripDetail.create_from_4sq_hsh('10h', 'Monument', foursquare_venues(self.city, [HISTORIC_SITE])[0]['venue'])
+    self.details << TripDetail.create_from_4sq_hsh('12h', 'Restaurant', foursquare_venues(self.city, [FRENCH_RESTAURANT], '')[0]['venue'])
   end
 
   protected
 
-  def foursquare_venues(city, categories)
+  def foursquare_venues(city, categories, query="")
     foursquare_client = Foursquare2::Client.new client_id: ENV['FOURSQUARE_CLIENT_ID'], client_secret: ENV['FOURSQUARE_CLIENT_SECRET']
-    foursquare_client.explore_venues(near: city, categoryId: categories.join(','))
+    foursquare_client.explore_venues(near: city, categoryId: categories.join(','), query: query)['groups'][0]['items']
   end
 end
