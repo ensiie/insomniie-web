@@ -10,3 +10,6 @@ fr:
       words_connector: ', '
       last_word_connector: ' et '
       two_words_connector: ' et '
+  mongoid:
+    inspection:
+      criteria: 'criteria'

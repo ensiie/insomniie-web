@@ -5,4 +5,5 @@ module ApplicationHelper
   include MapHelper
   include GoogleSearchHelper
   include DeezerHelper
+  include DishHelper
 end
