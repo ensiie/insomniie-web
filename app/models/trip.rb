@@ -8,7 +8,7 @@ class Trip
   field :date, type: Date, default: -> {Date.today}
   field :ip_address
 
-  has_many :details, class_name: 'TripDetail'
+  has_many :details, class_name: 'TripDetail', inverse_of: :trip
 
   before_create :fetch_details
 
@@ -28,16 +28,17 @@ class Trip
 
   def fetch_details
     # petit dej
-    #
-    # venue = foursquare_venues(self.city, [CAFE])['groups'][0]['items'][0]['venue']
+    venue = foursquare_venues(self.city, [CAFE])['groups'][0]['items'][0]['venue']
+    petit_dej = TripDetail.create({
+      time: '8am',
+      category: 'Petit dejeuné',
+      venue_name: venue['name'],
+      venue_lat: venue['location']['lat'],
+      venue_lng: venue['location']['lng'],
+      venue_4sq_id: venue['4f1860a7e4b0ebf9e4a3f3b6']
+    })
 
-    # self.details << TripDetail.create {
-    #   time: '8am',
-    #   category: 'Petit dejeuné',
-    #   venue_name: venue['name'],
-    #   venue_lat: venue['lat'],
-    #   venue_lng: venue['lng']
-    # }
+    self.details << petit_dej
   end
 
   protected
