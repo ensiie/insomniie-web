@@ -2,7 +2,7 @@
 body
   background: $bodyBackground
   color: $textColor
-  padding-top: 80px
+  padding-top: 68px
 
 a
   color: $activeColor
@@ -12,6 +12,8 @@ p
   line-height: 1.8em
 
 .hero-unit
+  &.hero-unit-no-margin
+    margin-bottom: 0
   background: $heroUnitBgColor
   border-bottom: 1px solid $activeColor
   position: relative
@@ -70,8 +72,7 @@ img.circle
 #map
   height: 550px
   .marker-title
-    font-family: "News Cycle", "Arial Narrow Bold", sans-serif
-    font-weight: bold
+    +title-font
   .map-fullscreen
     z-index: 1
 
@@ -126,3 +127,24 @@ img.circle
   +primary-search-width
   display: block
   padding: 10px 15px
+
+.journey
+  margin: 0
+  .journey-step
+    list-style: none
+    padding-bottom: 20px
+    border-bottom: 1px solid $activeColor
+    margin-bottom: 20px
+    .journey-time-container
+      background: $activeColor
+      text-align: center
+      display: table
+      .journey-time
+        display: table-cell
+        vertical-align: middle
+        +title-font
+        font-size: 1.5em
+        color: white
+      height: 70px
+      width: 70px
+      border-radius: 50%

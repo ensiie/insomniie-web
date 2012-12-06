@@ -1,6 +1,30 @@
+-# encoding: utf-8
+.row
+  .hero-unit
+    .container
+      .span12
+        .background(aria-hidden="true")
+          %i.icon-globe
+        %h1
+          Votre visite de
+          = @journey.city
+        %p.lead
+          Carnet de route pour passer une super journée
+
 .container
   .row
-    .span12
-      = @journey.to_json
-      = @journey.city
-      = @journey.details.to_json
+    .span8
+      %ul.journey
+        - @journey.details.each do |step|
+          %li.row.journey-step
+            .span1
+              .journey-time-container
+                .journey-time
+                  = step.time
+            .span7
+              %h4.media-heading
+                = step.venue_name
+              %p
+                = step.category
+    .span4
+      %img{src: "http://placehold.it/370x370"}
