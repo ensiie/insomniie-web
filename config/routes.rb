@@ -16,8 +16,8 @@ InsomniieWeb::Application.routes.draw do
     namespace :v1, format: :json do
       resource :journey
       namespace :cities do
-        post "autocomplete", action: "autocomplete"
-        post "region", action: "region"
+        get "autocomplete", action: "autocomplete"
+        get "region", action: "region"
       end
     end
   end

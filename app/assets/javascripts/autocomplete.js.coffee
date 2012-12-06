@@ -23,13 +23,12 @@ $(document).on "ready page:load", ->
           #Do data request. Insert your own API logic here.
           $.ajax
             url: "/api/v1/cities/autocomplete"
-            type: 'POST'
+            type: 'GET'
             dataType: 'json'
             crossDomain: true
             data:
               city: $(@).val()
             success: (data) ->
-              console.log data
               #set this to true when your callback executes
               self.data "active", true
 
