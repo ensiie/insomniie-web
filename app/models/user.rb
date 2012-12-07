@@ -50,6 +50,8 @@ class User
   # Avatar
   field :avatar, type: String
 
+  has_many :friends
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user

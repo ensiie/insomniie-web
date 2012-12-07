@@ -9,3 +9,11 @@
         = form_for Trip.new, url: journey_path, method: :get do |f|
           = f.text_field :city, class: "typeahead", placeholder: "Entrez une ville", autocomplete: "off"
           = f.submit "Partez !", class: "btn btn-warning"
+  .row
+    .offset3.span6
+      .friends
+
+:coffeescript
+  jQuery ->
+    $.get '/friends', (friendsTemplate) ->
+      $('.friends').html friendsTemplate

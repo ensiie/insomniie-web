@@ -23,6 +23,7 @@ gem 'rabl'
 gem 'kaminari'
 gem 'foursquare2'
 gem 'geocoder'
+gem 'coffee-filter'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -2,6 +2,7 @@ InsomniieWeb::Application.routes.draw do
 
   root :to => 'high_voltage/pages#show', :id => 'home'
 
+  get '/friends' => 'users/friends#index', as: :friends
   devise_for :users,
     :skip => [:sessions, :registrations],
     :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
