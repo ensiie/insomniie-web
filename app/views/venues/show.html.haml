@@ -24,13 +24,14 @@
     .span12
       - unless wiki[:large_image].blank?
         = image_tag wiki[:large_image], class: "wikipedia-image-float"
-      %p
-        - if wiki[:description].blank?
+      - if wiki[:description].blank?
+        %p
           %em Pas d'information sur ce lieu provenant de Wikipedia.
-        - else
+      - else
+        %p
           = wiki[:description]
-      %cite.pull-right
-        Wikipedia
+        %cite.pull-right
+          Wikipedia
 
 .row
   .page-header
