@@ -1,0 +1,9 @@
+/* line 1 */
+body {
+  font-family: Verdana;
+  font-size: 10pt;
+}
+
+canvas {
+background: #d5f3ff url("../images/sky.png");
+}

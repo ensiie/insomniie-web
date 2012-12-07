@@ -64,7 +64,9 @@
           Bravo ! Le Konami code n'a donc pas de secret pour vous...
       .modal-body
         %p
-          %iframe{:frameBorder => "0", height: "398", width: "100%"}
+        .test
+          = link_to image_tag("crazybretzel.png") , asset_path("crazybretzel/index.html")
+          = link_to image_tag("crazycaribou.png") , asset_path("crazycaribou/index.html")
       .modal-footer
         = link_to 'http://operasoftware.github.com/Emberwind/', target: '_blank', class: 'btn btn-external-link' do
           %i.icon-link
