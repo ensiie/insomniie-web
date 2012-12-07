@@ -91,6 +91,7 @@ GEM
       faraday_middleware (>= 0.8)
       hashie (~> 1.0)
     fssm (0.2.9)
+    geocoder (1.1.5)
     gon (4.0.1)
       actionpack (>= 2.3.0)
       json
@@ -255,6 +256,7 @@ DEPENDENCIES
   devise
   font-awesome-sass-rails
   foursquare2
+  geocoder
   gon
   haml-rails
   high_voltage

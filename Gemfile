@@ -22,6 +22,7 @@ gem 'tire'
 gem 'rabl'
 gem 'kaminari'
 gem 'foursquare2'
+gem 'geocoder'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
