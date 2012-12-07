@@ -1,5 +1,7 @@
 kExec = ->
   kc = $('#konami_code')
+  bre = $('.bretzel')
+  car = $('.caribou')
   external_link = kc.find('.btn-external-link')
   game_url = 'http://operasoftware.github.com/Emberwind/'
 
@@ -8,6 +10,7 @@ kExec = ->
     external_link.attr 'href', game_url
     $('body').toggleClass 'canada'
     $.post '/theme'
+
 
   kc.on 'hide', ->
     kc.find('iframe').attr 'src', ''

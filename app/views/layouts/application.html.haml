@@ -61,16 +61,21 @@
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
         %h3
           %i.icon-trophy
-          Bravo ! Le Konami code n'a donc pas de secret pour vous...
+          Bravo ! Le Konami code n'a donc pas de secret pour vous... 
+          %br
+          Vous avez débloqué deux jeux géniaux en full HTML5!
       .modal-body
         %p
-        .test
-          = link_to image_tag("crazybretzel.png") , asset_path("crazybretzel/index.html")
-          = link_to image_tag("crazycaribou.png") , asset_path("crazycaribou/index.html")
+        .konami.thumbnail
+          .bretzel
+            = link_to image_tag("crazybretzel.png") , asset_path("crazybretzel/index.html"), target: '_blank'
+            %p
+              Un petit Bretzel se promène dans la forêt, aide-le à ne pas se faire manger par les caribous !
+          .caribou
+            = link_to image_tag("crazycaribou.png") , asset_path("crazycaribou/index.html"), target: '_blank'
+            %p
+              Il neige des bretzels ! Aide le caribou à les éviter en leur tirant dessus !
       .modal-footer
-        = link_to 'http://operasoftware.github.com/Emberwind/', target: '_blank', class: 'btn btn-external-link' do
-          %i.icon-link
-          Accéder au site original
         %button.btn.btn-primary{"aria-hidden" => "true", "data-dismiss" => "modal"}
           %i.icon-remove
           Fini de s'amuser ?
