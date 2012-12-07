@@ -10,6 +10,9 @@
           = @journey.city
         %p.lead
           Carnet de route pour passer une super journée
+        - if @journey.city.downcase == "strasbourg"
+          %a{:href => asset_path("strasbourg.html")}
+            %button Journées des utilisateurs
 
 .container
   .row
@@ -23,7 +26,7 @@
                   = step.time
             .span7
               %h4.media-heading
-                = step.venue_name
+                = step.venue.name
               %p
                 = step.category
     .span4
