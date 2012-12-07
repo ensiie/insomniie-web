@@ -19,6 +19,9 @@ InsomniieWeb::Application.routes.draw do
         get "autocomplete", action: "autocomplete"
         get "region", action: "region"
       end
+      namespace :venues do
+        get "wikipedia", action: "wikipedia"
+      end
     end
   end
 end
