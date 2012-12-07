@@ -44,11 +44,16 @@ $(document).on "ready page:load", ->
   # Add a MapBox map
   if $('#map').length > 0
 
+    mapUnique = $('.map-unique').length > 0
+
     # Add the empty mapbox layer
     layer = mapbox.layer().id('<%= ENV['MAPBOX_LAYER_ID'] %>')
 
     # Load the empty map
-    map = mapbox.map 'map', layer
+    map = if mapUnique
+      mapbox.map 'map', layer, null, []
+    else
+      mapbox.map 'map', layer
 
     # Add the markers layer
     markerLayer = mapbox.markers.layer()
@@ -60,9 +65,13 @@ $(document).on "ready page:load", ->
     map.addLayer markerLayer
 
     # Center and zoom the map on France
-    map.zoom(14).center(lat: gon.trip.lat, lon: gon.trip.lng)
+    if mapUnique
+      map.zoom(14).center(lat: gon.venue.lat, lon: gon.venue.lng)
+      steps = [gon.venue]
+    else
+      map.zoom(14).center(lat: gon.trip.lat, lon: gon.trip.lng)
+      steps = gon.trip.details
 
-    steps = gon.trip.details
     for step in steps
       markerLayer.add_feature
         geometry:

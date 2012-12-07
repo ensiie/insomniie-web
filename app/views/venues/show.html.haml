@@ -1,0 +1,69 @@
+-# encoding: utf-8
+.row
+  .hero-unit
+    .container
+      .span12
+        .background(aria-hidden="true")
+          %i.icon-globe
+        %h1
+          = @venue.name
+        %p.lead
+          Découvrez ce lieu
+
+.row
+  .page-header
+    .container
+      .span12
+        %h2
+          %i.icon-info-sign
+          Qu'est-ce que c'est&nbsp;?
+
+.container
+  .row
+    - wiki = get_preview_from_wikipedia_for @venue.name
+    .span12
+      - unless wiki[:large_image].blank?
+        = image_tag wiki[:large_image], class: "wikipedia-image-float"
+      %p
+        = wiki[:description]
+
+.row
+  .page-header
+    .container
+      .span12
+        %h2
+          %i.icon-map-marker
+          Où est-ce que c'est&nbsp;?
+.row
+  #map.map-unique
+
+.row
+  .page-header
+    .container
+      .span12
+        %h2
+          %i.icon-book
+          Il y a des livres sur ce lieu&nbsp;! Découvrez-les&nbsp;!
+.container
+  .row
+    .span12
+      - amazon_books = amazon_books_for(@venue.name)
+      - if amazon_books.empty?
+        %em Aucun résultats reçus de la part d'Amazon. Une erreur est peut-être survenue. Essayez de recharger la page.
+      - else
+        %ul.thumbnails.masonry.clearfix
+          - amazon_books.each do |book|
+            %li.span3
+              .thumbnail
+                = image_tag book[:image]
+                .caption
+                  %h3
+                    = book[:title]
+                  %p.lead
+                    = book[:author]
+                  %small
+                    Le neuf le moins cher est à
+                    = book[:price]
+                  = link_to book[:url], target: "_blank", class: "btn btn-primary" do
+                    %i.icon-link
+                    Voir le produit sur Amazon

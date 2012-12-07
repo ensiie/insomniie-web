@@ -3,6 +3,13 @@
   .row
     .offset3.span6
       .primary-search
+        - if notice or alert
+          - if notice
+            .alert.alert-success
+              = notice
+          - if alert
+            .alert.alert-error
+              = alert
         %h1
           %i.icon-globe
           Préparez votre prochain séjour&nbsp;!

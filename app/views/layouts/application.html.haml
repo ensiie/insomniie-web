@@ -29,6 +29,9 @@
               %li
                 = link_to page_path('about') do
                   À propos
+              %li
+                = link_to "http://fadouakawni.com/ndi/" do
+                  Page des rendus
             %ul.nav.pull-right
               - if user_signed_in?
                 %li.dropdown
@@ -45,15 +48,6 @@
                   = link_to user_omniauth_authorize_path(:facebook), "data-no-turbolink" => true do
                     %i.icon-facebook-sign
                     Se connecter avec Facebook
-    .container
-      .row
-        .span12
-          - if notice
-            .flash.flash-notice
-              = notice
-          - if alert
-            .flash.flash-alert
-              = alert
     = yield
 
     #konami_code.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}

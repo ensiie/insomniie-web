@@ -12,6 +12,7 @@ InsomniieWeb::Application.routes.draw do
   end
 
   resource :journey
+  resources :venues
 
   namespace :api do
     namespace :v1, format: :json do
