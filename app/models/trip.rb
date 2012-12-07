@@ -18,6 +18,7 @@ class Trip
 
   accepts_nested_attributes_for :details
 
+  BREAKFAST = '4bf58dd8d48988d143941735'
   BAR = '4bf58dd8d48988d116941735'
   ART = '4bf58dd8d48988d1e2931735'
   FAMOUS_MONUMENT = '4bf58dd8d48988d12d941735'
@@ -25,6 +26,7 @@ class Trip
   ZOO = '4bf58dd8d48988d17b941735'
   CAFE = '4bf58dd8d48988d16d941735'
   FOOD = '4d4b7105d754a06374d81259'
+  BRASSERIE = '50327c8591d4c4b30a586d5d'
   MONUMENT_LANDMARK = '4bf58dd8d48988d12d941735'
   CHURCH = '4bf58dd8d48988d132941735'
   WINE_SHOP = '4bf58dd8d48988d119951735'
@@ -42,10 +44,10 @@ class Trip
   end
 
   def fetch_details
-    cafe_venues = foursquare_venues(self.city, [CAFE]).slice(0, 5).shuffle
+    cafe_venues = foursquare_venues(self.city, [BREAKFAST, CAFE]).slice(0, 5).shuffle
     information_venues = foursquare_venues(self.city, [TOURIST_INFORMATION_CENTER]).slice(0, 5).shuffle
     historic_site_venues = foursquare_venues(self.city, [MUSEUM, FAMOUS_MONUMENT]).slice(0, 5).shuffle
-    restaurant_venues = foursquare_venues(self.city, [FRENCH_RESTAURANT]).slice(0, 5).shuffle
+    restaurant_venues = foursquare_venues(self.city, [BRASSERIE, FRENCH_RESTAURANT]).slice(0, 5).shuffle
     church_venues = foursquare_venues(self.city, [CHURCH, ART, FAMOUS_MONUMENT]).slice(0, 5).shuffle
     gift_venues = foursquare_venues(self.city, [GIFT_SHOP]).slice(0, 5).shuffle
     strip_venues = foursquare_venues(self.city, [STRIP_CLUB]).slice(0, 5).shuffle
@@ -61,7 +63,7 @@ class Trip
     self.details << TripDetail.create_from_4sq_hsh('14h', 'Monument', church_venues[0]['venue'], 4) if church_venues[0]
     self.details << TripDetail.create_from_4sq_hsh('16h', 'Monument', historic_site_venues[1]['venue'], 5) if historic_site_venues[1]
     self.details << TripDetail.create_from_4sq_hsh('18h', 'Cadeau', gift_venues[0]['venue'], 6) if gift_venues[0]
-    self.details << TripDetail.create_from_4sq_hsh('19h', 'Repas du soir', restaurant_venues[0]['venue'], 7) if restaurant_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('19h', 'Repas du soir', restaurant_venues[1]['venue'], 7) if restaurant_venues[1]
     self.details << TripDetail.create_from_4sq_hsh('22h', 'Bar', bar_venues[0]['venue'], 8) if bar_venues[0]
     self.details << TripDetail.create_from_4sq_hsh('1h', 'Nuit', strip_venues[0]['venue'], 9) if strip_venues[0]
   end
