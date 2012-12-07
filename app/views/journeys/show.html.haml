@@ -38,7 +38,11 @@
                   = step.time
             .span7
               %h4
-                = step.venue.name
+                = step.venue.name 
+              - if step.category == "Déjeuner" || step.category == "Diner"
+                %p.meal
+                  Spécialité locale : 
+                  =DishHelper.get_dish_from_region((get_region_of_city(@journey.city))[:region])[:name].capitalize
               %p
                 = step.category
     .span4

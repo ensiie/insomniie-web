@@ -63,7 +63,7 @@ class Trip
     self.details << TripDetail.create_from_4sq_hsh('14h', 'Monument', church_venues[0]['venue'], 4) if church_venues[0]
     self.details << TripDetail.create_from_4sq_hsh('16h', 'Monument', historic_site_venues[1]['venue'], 5) if historic_site_venues[1]
     self.details << TripDetail.create_from_4sq_hsh('18h', 'Cadeau', gift_venues[0]['venue'], 6) if gift_venues[0]
-    self.details << TripDetail.create_from_4sq_hsh('19h', 'Repas du soir', restaurant_venues[1]['venue'], 7) if restaurant_venues[1]
+    self.details << TripDetail.create_from_4sq_hsh('19h', 'Diner', restaurant_venues[1]['venue'], 7) if restaurant_venues[1]
     self.details << TripDetail.create_from_4sq_hsh('22h', 'Bar', bar_venues[0]['venue'], 8) if bar_venues[0]
     self.details << TripDetail.create_from_4sq_hsh('1h', 'Nuit', strip_venues[0]['venue'], 9) if strip_venues[0]
   end
