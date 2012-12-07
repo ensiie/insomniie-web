@@ -73,7 +73,7 @@
           - amazon_books.each do |book|
             %li.span2
               .thumbnail
-                = image_tag book[:image]
+                = image_tag book[:image] if book[:image].present?
                 .caption
                   %h3
                     = book[:title]
