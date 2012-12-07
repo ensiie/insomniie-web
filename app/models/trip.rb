@@ -52,14 +52,22 @@ class Trip
     # region_name = cafe_venues[0]['venue']['location']['state']
     # self.bouffe = DishHelper.get_dish_from_region(region_name).name
 
-    self.details << TripDetail.create_from_4sq_hsh('8h', 'Petit dejeuné', cafe_venues[0]['venue']) if cafe_venues[0]
-    self.details << TripDetail.create_from_4sq_hsh('9h', 'Informations', information_venues[0]['venue']) if information_venues[0]
-    self.details << TripDetail.create_from_4sq_hsh('10h', 'Monument', historic_site_venues[0]['venue']) if historic_site_venues[0]
-    self.details << TripDetail.create_from_4sq_hsh('12h', 'Restaurant', restaurant_venues[0]['venue']) if restaurant_venues[0]
-    self.details << TripDetail.create_from_4sq_hsh('14h', 'Monument', church_venues[0]['venue']) if church_venues[0]
-    self.details << TripDetail.create_from_4sq_hsh('16h', 'Monument', historic_site_venues[1]['venue']) if historic_site_venues[1]
-    self.details << TripDetail.create_from_4sq_hsh('19h', 'Cadeau', gift_venues[0]['venue']) if gift_venues[0]
-    self.details << TripDetail.create_from_4sq_hsh('1h', 'Nuit', strip_venues[0]['venue']) if strip_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('8h', 'Petit dejeuné', cafe_venues[0]['venue'], 0) if cafe_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('9h', 'Informations', information_venues[0]['venue'], 1) if information_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('10h', 'Monument', historic_site_venues[0]['venue'], 2) if historic_site_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('12h', 'Restaurant', restaurant_venues[0]['venue'], 3) if restaurant_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('14h', 'Monument', church_venues[0]['venue'], 4) if church_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('16h', 'Monument', historic_site_venues[1]['venue'], 5) if historic_site_venues[1]
+    self.details << TripDetail.create_from_4sq_hsh('19h', 'Cadeau', gift_venues[0]['venue'], 6) if gift_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('1h', 'Nuit', strip_venues[0]['venue'], 7) if strip_venues[0]
+  end
+
+  def lat
+    coordinates[0]
+  end
+
+  def lng
+    coordinates[1]
   end
 
   protected

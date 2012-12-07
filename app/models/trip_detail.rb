@@ -6,8 +6,11 @@ class TripDetail
 
   field :time
   field :category
+  field :position
 
-  def self.create_from_4sq_hsh(time, category, foursq_hsh)
+  default_scope asc(:position)
+
+  def self.create_from_4sq_hsh(time, category, foursq_hsh, pos)
     venue = Venue.find_or_create_by(fousq_id: foursq_hsh['id'])
     venue.update_attributes name: foursq_hsh['name'],
       coordinates: [foursq_hsh['location']['lat'], foursq_hsh['location']['lng']]
@@ -16,6 +19,7 @@ class TripDetail
     end
     self.create time: time,
       category: category,
-      venue: venue
+      venue: venue,
+      position: pos
   end
 end
