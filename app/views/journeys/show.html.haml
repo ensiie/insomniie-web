@@ -55,18 +55,20 @@
         %p
           = wiki[:description]
 
-- amazon_books = amazon_books_for(@journey.city)
-- unless amazon_books.empty?
-  .row
-    .page-header
-      .container
-        .span12
-          %h2
-            %i.icon-book
-            Préparez votre séjour en lisant sur le sujet
-  .container
-    .row
+.row
+  .page-header
+    .container
       .span12
+        %h2
+          %i.icon-book
+          Préparez votre séjour en lisant sur le sujet
+.container
+  .row
+    .span12
+      - amazon_books = amazon_books_for(@journey.city)
+      - if amazon_books.empty?
+        %em Aucun résultats reçus de la part d'Amazon. Une erreur est peut-être survenue. Essayez de recharger la page.
+      - else
         %ul.thumbnails.masonry.clearfix
           - amazon_books.each do |book|
             %li.span2
