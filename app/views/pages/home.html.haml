@@ -1,11 +1,11 @@
 -# encoding: utf-8
 .container
-  .row.primary-search
-    .span12
-      %h1
-        Préparer votre prochain séjour !
-    = form_for Trip.new, url: journey_path, method: :get do |f|
-      .span9
-        = f.text_field :city, class: "typeahead", placeholder: "Entrez une ville"
-      .span3
-        = f.submit "Partez !", class: "btn btn-primary"
+  .row
+    .offset3.span6
+      .primary-search
+        %h1
+          %i.icon-globe
+          Préparez votre prochain séjour !
+        = form_for Trip.new, url: journey_path, method: :get do |f|
+          = f.text_field :city, class: "typeahead", placeholder: "Entrez une ville", autocomplete: "off"
+          = f.submit "Partez !", class: "btn btn-warning"
