@@ -11,6 +11,9 @@ class TripDetail
     venue = Venue.find_or_create_by(fousq_id: foursq_hsh['id'])
     venue.update_attributes name: foursq_hsh['name'],
       coordinates: [foursq_hsh['location']['lat'], foursq_hsh['location']['lng']]
+    if items = foursq_hsh.try(:[], 'photos').try(:[], 'groups').try(:[], 0).try(:[], 'items')
+      venue.update_attributes photos_attributes: items.map{ |p| p['sizes']['items'][0]}
+    end
     self.create time: time,
       category: category,
       venue: venue
