@@ -5,7 +5,7 @@
       .primary-search
         %h1
           %i.icon-globe
-          Préparez votre prochain séjour !
+          Préparez votre prochain séjour&nbsp;!
         = form_for Trip.new, url: journey_path, method: :get do |f|
           = f.text_field :city, class: "typeahead", placeholder: "Entrez une ville", autocomplete: "off"
           = f.submit "Partez !", class: "btn btn-warning"
