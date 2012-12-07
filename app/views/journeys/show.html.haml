@@ -11,8 +11,16 @@
         %p.lead
           Carnet de route pour passer une super journée
         - if @journey.city.downcase == "strasbourg"
-          %a{:href => asset_path("strasbourg.html")}
-            %button Journées des utilisateurs
+          = link_to asset_path("strasbourg.html"), class: "btn btn-warning" do
+            %i.icon-user
+            Journées des utilisateurs
+.row
+  .page-header
+    .container
+      .span12
+        %h2
+          %i.icon-globe
+          La journée que nous vous avons préparée
 
 .container
   .row
@@ -30,4 +38,44 @@
               %p
                 = step.category
     .span4
-      %img{src: "http://placehold.it/370x370"}
+      #map
+    - wiki = get_preview_from_wikipedia_for @journey.city
+    .span4
+      .wikipedia
+        %h3
+          %i.icon-book
+          Un peu d'histoire...
+        - unless wiki[:large_image].blank?
+          %p
+            = image_tag wiki[:large_image]
+        %p
+          = wiki[:description]
+
+- amazon_books = amazon_books_for(@journey.city)
+- unless amazon_books.empty?
+  .row
+    .page-header
+      .container
+        .span12
+          %h2
+            %i.icon-book
+            Préparez votre séjour en lisant sur le sujet
+  .container
+    .row
+      .span12
+        %ul.thumbnails.masonry.clearfix
+          - amazon_books.each do |book|
+            %li.span2
+              .thumbnail
+                = image_tag book[:image]
+                .caption
+                  %h3
+                    = book[:title]
+                  %p.lead
+                    = book[:author]
+                  %small
+                    Le neuf le moins cher est à
+                    = book[:price]
+                  = link_to book[:url], target: "_blank", class: "btn btn-primary" do
+                    %i.icon-link
+                    Voir le produit sur Amazon

@@ -15,5 +15,7 @@ module GoogleSearchHelper
   # to get the first image link for the given keywords
   def get_image_from_google_for(keywords)
     get_link_from_google_for keywords, :image
+  rescue Exception
+    ''
   end
 end
