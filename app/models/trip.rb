@@ -9,11 +9,12 @@ class Trip
   field :city
   field :date, type: Date, default: -> {Date.today}
   field :ip_address
+  field :coordinates, type: Array
   field :dish
 
   has_many :details, class_name: 'TripDetail', inverse_of: :trip
 
-  before_create :fetch_details
+  before_create :fetch_coordinates, :fetch_details
 
   accepts_nested_attributes_for :details
 
@@ -35,6 +36,10 @@ class Trip
   STRIP_CLUB = '4bf58dd8d48988d1d6941735'
   PHARMACY = '4bf58dd8d48988d10f951735'
 
+  def fetch_coordinates
+    self.coordinates = Geocoder.coordinates(self.city)
+  end
+
   def fetch_details
     cafe_venues = foursquare_venues(self.city, [CAFE]).slice(0, 5).shuffle
     information_venues = foursquare_venues(self.city, [TOURIST_INFORMATION_CENTER]).slice(0, 5).shuffle
@@ -47,20 +52,21 @@ class Trip
     # region_name = cafe_venues[0]['venue']['location']['state']
     # self.bouffe = DishHelper.get_dish_from_region(region_name).name
 
-    self.details << TripDetail.create_from_4sq_hsh('8h', 'Petit dejeuné', cafe_venues[0]['venue'])
-    self.details << TripDetail.create_from_4sq_hsh('9h', 'Informations', information_venues[0]['venue'])
-    self.details << TripDetail.create_from_4sq_hsh('10h', 'Monument', historic_site_venues[0]['venue'])
-    self.details << TripDetail.create_from_4sq_hsh('12h', 'Restaurant', restaurant_venues[0]['venue'])
-    self.details << TripDetail.create_from_4sq_hsh('14h', 'Monument', church_venues[0]['venue'])
-    self.details << TripDetail.create_from_4sq_hsh('16h', 'Monument', historic_site_venues[1]['venue'])
-    self.details << TripDetail.create_from_4sq_hsh('19h', 'Cadeau', gift_venues[0]['venue'])
-    self.details << TripDetail.create_from_4sq_hsh('1h', 'Nuit', strip_venues[0]['venue'])
+    self.details << TripDetail.create_from_4sq_hsh('8h', 'Petit dejeuné', cafe_venues[0]['venue']) if cafe_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('9h', 'Informations', information_venues[0]['venue']) if information_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('10h', 'Monument', historic_site_venues[0]['venue']) if historic_site_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('12h', 'Restaurant', restaurant_venues[0]['venue']) if restaurant_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('14h', 'Monument', church_venues[0]['venue']) if church_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('16h', 'Monument', historic_site_venues[1]['venue']) if historic_site_venues[1]
+    self.details << TripDetail.create_from_4sq_hsh('19h', 'Cadeau', gift_venues[0]['venue']) if gift_venues[0]
+    self.details << TripDetail.create_from_4sq_hsh('1h', 'Nuit', strip_venues[0]['venue']) if strip_venues[0]
   end
 
   protected
 
   def foursquare_venues(city, categories, query="")
     foursquare_client = Foursquare2::Client.new client_id: ENV['FOURSQUARE_CLIENT_ID'], client_secret: ENV['FOURSQUARE_CLIENT_SECRET']
-    foursquare_client.explore_venues(near: "#{city},France", categoryId: categories.join(','), query: query, venuePhotos: 1)['groups'][0]['items']
+    # raise foursquare_client.explore_venues(ll: self.coordinates.join(','), categoryId: categories.join(','), query: query, venuePhotos: 1).to_yaml
+    foursquare_client.explore_venues(ll: self.coordinates.join(','), categoryId: categories.join(','), query: query, venuePhotos: 1)['groups'][0]['items']
   end
 end

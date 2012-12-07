@@ -120,13 +120,25 @@ img.circle
 
 .primary-search
   margin: 10vmin 0
-  padding: 5vmin
-  background: rgba(255,255,255,0.8)
+  padding: 3vmin
+  background: rgba(255,255,255,0.6)
+  +border-radius(4px)
+  form
+    margin: 0
+  h1
+    font-size: 28pt
+    margin-bottom: 30px
+    color: $textColor
   input
     +primary-search-width
     margin: 5vmin 0
-    padding: 30px 15px
+    padding: 15px 15px
     color: #111
+    margin: 5px 0
+  input[type=submit]
+    width: 100%
+    margin: 0
+    color: #eee
 
 .typeahead-item
   +primary-search-width

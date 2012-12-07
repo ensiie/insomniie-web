@@ -22,6 +22,7 @@ gem 'tire'
 gem 'rabl'
 gem 'kaminari'
 gem 'foursquare2'
+gem 'geocoder'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -51,6 +52,10 @@ group :development, :test do
   gem 'awesome_print'
   gem 'sextant'
   gem 'pry-remote'
+end
+
+group :production do
+  gem 'unicorn'
 end
 
 # To use ActiveModel has_secure_password

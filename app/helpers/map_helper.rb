@@ -17,4 +17,14 @@ module MapHelper
       results
     end
   end
+
+  def get_region_of_city(city)
+    if city
+      url = "http://maps.google.com/maps/api/geocode/json?address=#{URI.escape(city)}&components=country:FR&sensor=false"
+      json = JSON.parse open(url).read
+      {region: json["results"][0]["address_components"][2]["long_name"]}
+    else
+      {}
+    end
+  end
 end
