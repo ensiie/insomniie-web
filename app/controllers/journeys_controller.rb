@@ -4,7 +4,7 @@ class JourneysController < ApplicationController
     @journey.ip_address = request.remote_ip
     @journey.city = params[:trip][:city]
     @journey.save
-    @region = get_region_of_city(@journey.city)[:region]
+    @region = get_region_of_city(@journey.city).try(:[], :region)
     @details = @journey.details.map do |step|
       venue = step.venue
       {

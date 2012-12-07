@@ -22,7 +22,8 @@ module MapHelper
     if city
       url = "http://maps.google.com/maps/api/geocode/json?address=#{URI.escape(city)}&components=country:FR&sensor=false"
       json = JSON.parse open(url).read
-      {region: json["results"][0]["address_components"][2]["long_name"]}
+      # {region: json["results"][0]["address_components"][2]["long_name"]}
+      {region: json.try(:[], "results").try(0).try(:[], "address_components").try(2).try(:[], "long_name")}
     else
       {}
     end
