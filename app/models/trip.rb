@@ -43,9 +43,9 @@ class Trip
   def fetch_details
     cafe_venues = foursquare_venues(self.city, [CAFE]).slice(0, 5).shuffle
     information_venues = foursquare_venues(self.city, [TOURIST_INFORMATION_CENTER]).slice(0, 5).shuffle
-    historic_site_venues = foursquare_venues(self.city, [HISTORIC_SITE, ART, MUSEUM, FAMOUS_MONUMENT]).slice(0, 5).shuffle
+    historic_site_venues = foursquare_venues(self.city, [MUSEUM, FAMOUS_MONUMENT]).slice(0, 5).shuffle
     restaurant_venues = foursquare_venues(self.city, [FRENCH_RESTAURANT]).slice(0, 5).shuffle
-    church_venues = foursquare_venues(self.city, [CHURCH]).slice(0, 5).shuffle
+    church_venues = foursquare_venues(self.city, [CHURCH, ART, FAMOUS_MONUMENT]).slice(0, 5).shuffle
     gift_venues = foursquare_venues(self.city, [GIFT_SHOP]).slice(0, 5).shuffle
     strip_venues = foursquare_venues(self.city, [STRIP_CLUB]).slice(0, 5).shuffle
 
