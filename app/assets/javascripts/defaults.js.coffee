@@ -8,6 +8,10 @@ $(document).on "ready page:load", ->
     interval: 5000
   )
 
+  friends = $(".home-friends")
+  if friends.length > 0
+    friends.load '/friends', ->
+      $('.masonry').masonry()
 
 $(window).on "load resize", ->
 

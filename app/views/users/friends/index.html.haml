@@ -1,6 +1,10 @@
-- @friends.each do |f|
-  = link_to journey_path(trip: {city: f.city, with: f.id}) do
-    .friend
-      %p= f.name
-      %p= image_tag f.url
-      %p= f.city
+%ul.thumbnails.masonry.clearfix
+  - @friends.each do |f|
+    %li.span2
+      = link_to journey_path(trip: {city: f.city, with: f.id}), class: "thumbnail friend" do
+        = image_tag f.url
+        .caption
+          %h4
+            = f.name
+          %p
+            = f.city

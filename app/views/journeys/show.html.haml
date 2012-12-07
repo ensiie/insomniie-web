@@ -57,8 +57,14 @@
         - unless wiki[:large_image].blank?
           %p
             = image_tag wiki[:large_image]
-        %p
-          = wiki[:description]
+        - if wiki[:description].blank?
+          %p
+            %em Pas d'information sur ce lieu provenant de Wikipedia.
+        - else
+          %p
+            = wiki[:description]
+          %cite.pull-right
+            Wikipedia
 
 .row
   .page-header
@@ -80,9 +86,9 @@
               .thumbnail
                 = image_tag book[:image] if book[:image].present?
                 .caption
-                  %h3
+                  %h4
                     = book[:title]
-                  %p.lead
+                  %p
                     = book[:author]
                   %small
                     Le neuf le moins cher est à

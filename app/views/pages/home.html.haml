@@ -16,11 +16,20 @@
         = form_for Trip.new, url: journey_path, method: :get do |f|
           = f.text_field :city, class: "typeahead", placeholder: "Entrez une ville", autocomplete: "off"
           = f.submit "Partez !", class: "btn btn-warning"
-  .row
-    .offset3.span6
-      .friends
 
-:coffeescript
-  jQuery ->
-    $.get '/friends', (friendsTemplate) ->
-      $('.friends').html friendsTemplate
+      - if user_signed_in?
+        .page-header
+          %h2
+            %i.icon-group
+            Découvrez la France avec vos amis
+        .friends.home-friends
+          .spinner
+            = image_tag "spinner.gif"
+      - else
+        .page-header
+          %h2
+            %i.icon-group
+            Découvrez la France avec en vous connectant sur Facebook
+        = link_to user_omniauth_authorize_path(:facebook), class: "btn btn-large btn-block btn-info" do
+          %i.icon-facebook-sign
+          Se connecter avec Facebook
