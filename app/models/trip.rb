@@ -17,12 +17,14 @@ class Trip
 
   accepts_nested_attributes_for :details
 
+  ART = '4bf58dd8d48988d1e2931735'
+  FAMOUS_MONUMENT = '4bf58dd8d48988d12d941735'
   MUSEUM = '4bf58dd8d48988d181941735'
   ZOO = '4bf58dd8d48988d17b941735'
   CAFE = '4bf58dd8d48988d16d941735'
   FOOD = '4d4b7105d754a06374d81259'
   MONUMENT_LANDMARK = '4bf58dd8d48988d12d941735'
-  CURCH = '4bf58dd8d48988d132941735'
+  CHURCH = '4bf58dd8d48988d132941735'
   WINE_SHOP = '4bf58dd8d48988d119951735'
   GIFT_SHOP = '4bf58dd8d48988d128951735'
   BIKE_RENTAL = '4e4c9077bd41f78e849722f9'
@@ -36,9 +38,9 @@ class Trip
   def fetch_details
     cafe_venues = foursquare_venues(self.city, [CAFE]).slice(0, 5).shuffle
     information_venues = foursquare_venues(self.city, [TOURIST_INFORMATION_CENTER]).slice(0, 5).shuffle
-    historic_site_venues = foursquare_venues(self.city, [HISTORIC_SITE]).slice(0, 5).shuffle
+    historic_site_venues = foursquare_venues(self.city, [HISTORIC_SITE, ART, MUSEUM, FAMOUS_MONUMENT]).slice(0, 5).shuffle
     restaurant_venues = foursquare_venues(self.city, [FRENCH_RESTAURANT]).slice(0, 5).shuffle
-    church_venues = foursquare_venues(self.city, [CURCH]).slice(0, 5).shuffle
+    church_venues = foursquare_venues(self.city, [CHURCH]).slice(0, 5).shuffle
     gift_venues = foursquare_venues(self.city, [GIFT_SHOP]).slice(0, 5).shuffle
     strip_venues = foursquare_venues(self.city, [STRIP_CLUB]).slice(0, 5).shuffle
 
