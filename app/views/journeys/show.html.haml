@@ -39,13 +39,13 @@
             .span7
               %h4
                 - if step.position == 0
-                  On dit souvent en France que le petit déjeuner est le repas le plus important de la journée, c'est pourquoi nous vous proposons
+                  On dit souvent en France que le petit-déjeuner est le repas le plus important de la journée, c'est pourquoi nous vous proposons
                   de vous rendre au 
                   = link_to step.venue do
                     = step.venue.name 
                 - elsif step.position == 1
                   Il est important de pouvoir vous repérer dans 
-                  =@journey.city 
+                  =@journey.city.capitalize
                   , nous vous conseillons donc de récupérer un plan de la ville à l'endroit suivant : 
                   = link_to step.venue do
                     = step.venue.name 
@@ -54,18 +54,17 @@
                   = link_to step.venue do
                     = step.venue.name 
                 - elsif step.position == 3
-                  Vous devez avoir faim après cette première visite, notre conseil pour vous remplir la panse, allez croquer un morceau à l'adresse suivante :
+                  Vous devez avoir faim après cette première visite, notre conseil pour vous remplir la panse est d'aller croquer un morceau à l'adresse suivante :
                   = link_to step.venue do
                     = step.venue.name 
                 - elsif step.position == 4
-                  Le ventre bien rempli, il est temps de reprendre votre chemin à travers les rues de 
-                  =@journey.city
-                  rendez-vous à
+                  Le ventre bien rempli, il est temps de reprendre votre chemin à travers les rues de #{@journey.city}.
+                  Rendez-vous à
                   = link_to step.venue do
                     = step.venue.name 
                   pour continuer les visites.
                 - elsif step.position == 5
-                  L'après-midi est loin d'être terminée, il vous reste plein de choses à voir, destination : 
+                  L'après-midi est loin d'être terminée, il vous reste plein de choses à voir. Destination : 
                   = link_to step.venue do
                     = step.venue.name 
                 - elsif step.position == 6
@@ -74,20 +73,18 @@
                     = step.venue.name 
                   achetez quelques souvenirs.
                 - elsif step.position == 7
-                  Cette journée a été dure, après l'effort, le réconfort, il est temps de déguster une spécialité de la région dans un bon restaurant :
+                  Cette journée a été dure, après l'effort, le réconfort : il est temps de déguster une spécialité de la région dans un bon restaurant :
                   = link_to step.venue do
                     = step.venue.name 
                 - elsif step.position == 8
-                  On ne peut pas avoir visité une ville sans y avoir trinqué, direction 
+                  On ne peut pas avoir visité une ville sans y avoir trinqué. Direction 
                   = link_to step.venue do
                     = step.venue.name 
                   où vous pourrez abondement vous désaltérer.
                 - elsif step.position == 9
                   Après cette journée forte en émotion, prenez le temps de vous décontracter et de découvrir les nuits chaudes de 
-                  =@journey.city 
-                  en allant à 
-                  = link_to step.venue do
-                    = step.venue.name 
+                  =@journey.city.capitalize
+                  en allant à #{link_to step.venue.name, step.venue}.
               - if(step.category == "Déjeuner" || step.category == "Diner") && DishHelper.dish_exists_in_region?(@region)
                 %p.meal
                   Spécialité locale&nbsp;:
