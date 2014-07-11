@@ -79,8 +79,9 @@ class Trip
   protected
 
   def foursquare_venues(city, categories, query="")
-    foursquare_client = Foursquare2::Client.new client_id: ENV['FOURSQUARE_CLIENT_ID'], client_secret: ENV['FOURSQUARE_CLIENT_SECRET'], api_version: "20120601"
+    foursquare_client = Foursquare2::Client.new client_id: ENV['FOURSQUARE_CLIENT_ID'], client_secret: ENV['FOURSQUARE_CLIENT_SECRET'], api_version: "20131016"
     # raise foursquare_client.explore_venues(ll: self.coordinates.join(','), categoryId: categories.join(','), query: query, venuePhotos: 1).to_yaml
-    foursquare_client.explore_venues(ll: self.coordinates.join(','), categoryId: categories.join(','), query: query, venuePhotos: 1)['groups'][0]['items']
+    res = foursquare_client.explore_venues(ll: self.coordinates.join(','), categoryId: categories.join(','), query: query, venuePhotos: 1)
+    res['groups'][0]['items']
   end
 end

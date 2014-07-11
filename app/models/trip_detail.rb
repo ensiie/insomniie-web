@@ -15,7 +15,13 @@ class TripDetail
     venue.update_attributes name: foursq_hsh['name'],
       coordinates: [foursq_hsh['location']['lat'], foursq_hsh['location']['lng']]
     if items = foursq_hsh.try(:[], 'photos').try(:[], 'groups').try(:[], 0).try(:[], 'items')
-      venue.update_attributes photos_attributes: items.map{ |p| p['sizes']['items'][0]}
+      venue.update_attributes photos_attributes: (items.map{ |ph|
+        {
+          height: ph['user']['photo']['height'],
+          width: ph['user']['photo']['width'],
+          url: "#{ph['user']['photo']['prefix']}#{ph['user']['photo']['suffix']}"
+        }
+      })
     end
     self.create time: time,
       category: category,
